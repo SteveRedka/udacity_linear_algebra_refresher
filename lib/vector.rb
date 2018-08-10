@@ -62,4 +62,20 @@ class Vector
     return Math.acos(cos) unless degrees
     Math.acos(cos) / Math::PI * 180
   end
+
+  def zero?(tolerance = 1e-10)
+    coordinates.inject(0, &:+).abs < tolerance
+  end
+
+  def parallel?(other)
+    return true if zero? || other.zero?
+    return true if angle(other).zero? || angle(other) == Math::PI
+    false
+  end
+
+  def orthogonal?(other, tolerance = 1e-10)
+    return true if zero? || other.zero?
+    return true if dot_product(other).abs < tolerance
+    false
+  end
 end
