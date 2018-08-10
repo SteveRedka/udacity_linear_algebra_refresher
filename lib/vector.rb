@@ -32,7 +32,7 @@ class Vector
   end
 
   def scale(int)
-    Vector.new(coordinates.map! { |num| num * int })
+    Vector.new(coordinates.map { |num| num * int })
   end
 
   def inspect
@@ -51,5 +51,15 @@ class Vector
   def dir
     return nil if coordinates.inject(:+).zero?
     scale(1 / mag)
+  end
+
+  def dot_product(other)
+    coordinates.zip(other.coordinates).map { |i, j| i * j }.inject(:+)
+  end
+
+  def angle(other, degrees = false)
+    cos = dot_product(other) / (mag * other.mag)
+    return Math.acos(cos) unless degrees
+    Math.acos(cos) / Math::PI * 180
   end
 end
