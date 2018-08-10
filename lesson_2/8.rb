@@ -1,8 +1,9 @@
-require './lib/vector'
+require_relative '../lib/vector'
 
 # Calculate dot products
 p Vector.new([7.887, 4.138]).dot_product(Vector.new([-8.802, 6.776]))
-p Vector.new([-5.955, -4.904, -1.874]).dot_product(Vector.new([-4.496, -8.755, 7.103]))
+p Vector.new([-5.955, -4.904, -1.874])
+        .dot_product(Vector.new([-4.496, -8.755, 7.103]))
 
 # Calculate radians
 a = Vector.new([3.183, -7.627])

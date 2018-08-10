@@ -1,4 +1,4 @@
-require './lib/vector'
+require_relative '../lib/vector'
 # require 'test/unit'
 
 # p Vector.new([8.218, -9.341]) + Vector.new([-1.129, 2.111])

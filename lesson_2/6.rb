@@ -1,4 +1,4 @@
-require './lib/vector'
+require_relative '../lib/vector'
 
 # Calculate magnitudes
 p Vector.new([-0.221, 7.437]).mag
