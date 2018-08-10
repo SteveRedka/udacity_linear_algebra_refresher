@@ -42,4 +42,14 @@ class Vector
   def to_s
     "Vector: #{@coordinates}"
   end
+
+  def mag
+    # Calculate magnitude
+    Math.sqrt(coordinates.map { |x| x**2 }.inject(0, &:+))
+  end
+
+  def dir
+    return nil if coordinates.inject(:+).zero?
+    scale(1 / mag)
+  end
 end
