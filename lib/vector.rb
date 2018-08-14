@@ -90,4 +90,25 @@ class Vector
   end
 
   alias height component_orthogonal_to
+
+  def *(other)
+    if coordinates.length != 3
+      raise ValueError, 'I have no idea how to multiply vectors with dimensions
+                         other than three'
+    end
+    x1, y1, z1 = coordinates
+    x2, y2, z2 = other.coordinates
+    new_coordinates = [y1 * z2 - y2 * z1,
+                       -(x1 * z2 - x2 * z1),
+                       x1 * y2 - x2 * y1]
+    Vector.new(new_coordinates)
+  end
+
+  def parallelogram_area(other)
+    Math.sqrt((self * other).coordinates.map { |i| i**2 }.inject(:+))
+  end
+
+  def triangle_area(other)
+    parallelogram_area(other) / 2.0
+  end
 end
