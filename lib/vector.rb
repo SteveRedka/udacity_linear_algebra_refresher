@@ -78,4 +78,16 @@ class Vector
     return true if dot_product(other).abs < tolerance
     false
   end
+
+  def component_parallel_to(other)
+    other.dir.scale(dot_product(other.dir))
+  end
+
+  alias proj component_parallel_to
+
+  def component_orthogonal_to(other)
+    self - proj(other)
+  end
+
+  alias height component_orthogonal_to
 end
