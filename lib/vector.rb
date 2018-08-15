@@ -1,6 +1,6 @@
 # My implementation of class vector for Udacity's Linear Algebra Refresher
 # course
-class Vector
+class Vector < Array
   attr_accessor :coordinates, :length
   def initialize(coordinates)
     @coordinates = coordinates
@@ -59,7 +59,7 @@ class Vector
 
   def angle(other, degrees = false)
     cos = dot_product(other) / (mag * other.mag)
-    return Math.acos(cos) unless degrees
+    return Math.acos(cos.round(5)) unless degrees
     Math.acos(cos) / Math::PI * 180
   end
 
@@ -110,5 +110,9 @@ class Vector
 
   def triangle_area(other)
     parallelogram_area(other) / 2.0
+  end
+
+  def [](key)
+    coordinates[key]
   end
 end
