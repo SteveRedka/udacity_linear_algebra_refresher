@@ -25,10 +25,10 @@ class Vector < Array
     self + other.negative
   end
 
-  def ==(other)
+  def ==(other, tolerance = 1e-5)
     raise 'It isn`t a vector!' if other.class != self.class
     raise 'These vectors have different dimenstions' if other.length != length
-    coordinates == other.coordinates
+    coordinates.zip(other.coordinates).map { |x, y| (x - y) <= tolerance }.select { |bool| !bool }.empty?
   end
 
   def scale(int)
